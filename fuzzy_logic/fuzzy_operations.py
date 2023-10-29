@@ -17,19 +17,19 @@ class FuzzySet:
     """
     A class for representing and manipulating triangular fuzzy sets.
     Attributes:
-        name: The name or label of the fuzzy set.
-        left_boundary: The left boundary of the fuzzy set.
-        peak: The peak (central) value of the fuzzy set.
-        right_boundary: The right boundary of the fuzzy set.
-        Methods:
-        membership(element): Calculate the membership value of
-        an input 'element' in the fuzzy set.
-        union(second_): Calculate the union of this fuzzy
-        set with another fuzzy set.
-        intersection(other): Calculate the intersection of this
-        fuzzy set with another.
-        complement(): Calculate the complement (negation) of this fuzzy set.
-        plot(): Plot the membership function of the fuzzy set.
+    name: The name or label of the fuzzy set.
+    left_boundary: The left boundary of the fuzzy set.
+    peak: The peak (central) value of the fuzzy set.
+    right_boundary: The right boundary of the fuzzy set.
+    Methods:
+    membership(element): Calculate the membership value of
+    an input 'element' in the fuzzy set.
+    union(second_): Calculate the union of this fuzzy
+    set with another fuzzy set.
+    intersection(other): Calculate the intersection of this
+    fuzzy set with another.
+    complement(): Calculate the complement (negation) of this fuzzy set.
+    plot(): Plot the membership function of the fuzzy set.
 
     >>> sheru = FuzzySet("Sheru", 0.4, 1, 0.6)
     >>> sheru
@@ -43,6 +43,7 @@ class FuzzySet:
     FuzzySet(name='Siya', left_boundary=0.5, peak=1, right_boundary=0.7)
     
     # Complement Operation
+    
     >>> sheru.complement()
     FuzzySet(name='¬Sheru', left_boundary=0.4, peak=0.6, right_boundary=0)
     >>> siya.complement()  # doctest: +NORMALIZE_WHITESPACE
@@ -50,16 +51,19 @@ class FuzzySet:
     right_boundary=0)
     
     # Intersection Operation
+    
     >>> siya.intersection(sheru)
     FuzzySet(name='Siya ∩ Sheru', left_boundary=0.5, peak=0.6, right_boundary=1.0)
     
     # Membership Operation
+    
     >>> sheru.membership(0.5)
     0.16666666666666663
     >>> sheru.membership(0.6)
     0.0
     
     # Union Operations
+    
     >>> siya.union(sheru)
     FuzzySet(name='Siya ∪ Sheru', left_boundary=0.4, peak=0.7, right_boundary=1.0)
     """
@@ -82,7 +86,7 @@ class FuzzySet:
         """
         Calculate the complement (negation) of this fuzzy set.
         Returns:
-            FuzzySet: A new fuzzy set representing the complement.
+        FuzzySet: A new fuzzy set representing the complement.
 
         >>> FuzzySet("fuzzy_set", 0.1, 0.2, 0.3).complement()
         FuzzySet(name='¬fuzzy_set', left_boundary=0.7, peak=0.9, right_boundary=0.8)
@@ -99,9 +103,9 @@ class FuzzySet:
         Calculate the intersection of this fuzzy set
         with another fuzzy set.
         Args:
-            other: Another fuzzy set to intersect with.
+        other: Another fuzzy set to intersect with.
         Returns:
-            A new fuzzy set representing the intersection.
+        A new fuzzy set representing the intersection.
 
         >>> FuzzySet("a", 0.1, 0.2, 0.3).intersection(FuzzySet("b", 0.4, 0.5, 0.6))
         FuzzySet(name='a ∩ b', left_boundary=0.4, peak=0.3, right_boundary=0.35)
@@ -117,7 +121,7 @@ class FuzzySet:
         """
         Calculate the membership value of an input 'element' in the fuzzy set.
         Returns:
-            The membership value of 'element' in the fuzzy set.
+        The membership value of 'element' in the fuzzy set.
 
         >>> a = FuzzySet("a", 0.1, 0.2, 0.3)
         >>> a.membership(0.09)
@@ -238,7 +242,7 @@ class FuzzySet:
         Calculate the complement (negation) of this fuzzy set.
         Returns:
         FuzzySet: A new fuzzy set representing the complement.
-        
+
         >>> a = FuzzySet("A", 0, 0.5, 1)
         >>> complement_a = ~a
         >>> complement_a.membership(0.1)
@@ -253,7 +257,6 @@ class FuzzySet:
             1-self.left_boundary,
             1-self.peak,
         )
-
     
 
 
@@ -279,7 +282,7 @@ if __name__ == "__main__":
     union_ab.plot()
     intersection_ab.plot()
     complement_a.plot()
-
+    
     plt.xlabel("x")
     plt.ylabel("Membership")
     plt.legend()
