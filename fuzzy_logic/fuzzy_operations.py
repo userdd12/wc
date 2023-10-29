@@ -22,9 +22,12 @@ class FuzzySet:
         peak: The peak (central) value of the fuzzy set.
         right_boundary: The right boundary of the fuzzy set.
     Methods:
-        membership(element): Calculate the membership value of an input 'x' in the fuzzy set.
-        union(second_): Calculate the union of this fuzzy set with another fuzzy set.
-        intersection(other): Calculate the intersection of this fuzzy set with another.
+        membership(element): Calculate the membership value of 
+        an input 'element' in the fuzzy set.
+        union(second_): Calculate the union of this fuzzy
+        set with another fuzzy set.
+        intersection(other): Calculate the intersection of this 
+        fuzzy set with another.
         complement(): Calculate the complement (negation) of this fuzzy set.
         plot(): Plot the membership function of the fuzzy set.
 
@@ -137,7 +140,7 @@ class FuzzySet:
             return (self.right_boundary - element) / (self.right_boundary - self.peak)
         elif self.peak == element:
             return 1.0
-
+        
         msg = f"Invalid value {element} for fuzzy set {self}"
         raise ValueError(msg)
 
@@ -155,7 +158,7 @@ class FuzzySet:
         return FuzzySet(
             f"{self.name} ∪ {second_fuzzy_set.name}",
             min(self.left_boundary, second_fuzzy_set.left_boundary),
-            max(self.right_boundary, second_fuzzy_set.right_boundary),
+            max(self.right_boundary,second_fuzzy_set.right_boundary),
             (self.peak + second_fuzzy_set.peak) / 2,
         )
 
@@ -173,7 +176,7 @@ class FuzzySet:
          Check if an element 'an_element' is a member of the fuzzy set.
         Returns:
         bool: True if 'x' is a member; False otherwise.
-
+        
         >>> a = FuzzySet("A", 0, 0.5, 1)
         >>> x = 0.2
         >>> x in a
@@ -182,9 +185,9 @@ class FuzzySet:
         >>> x in a
         True
         """
-        return self.membership(an_element) > 0
-
-    def __and__(self, another_fuzzy_set: "FuzzySet") -> "FuzzySet":
+        return self.membership(an_element)>0
+    
+    def __and__(self,another_fuzzy_set:"FuzzySet") -> FuzzySet:
         """
         Calculate the intersection of this fuzzy set with another fuzzy set.
         Args:
@@ -207,8 +210,7 @@ class FuzzySet:
             min(self.right_boundary, another_fuzzy_set.right_boundary),
             (self.peak + another_fuzzy_set.peak) / 2,
         )
-
-    def __or__(self, another_fuzzy_set: "FuzzySet") -> "FuzzySet":
+    def __or__(self, another_fuzzy_set: "FuzzySet") -> FuzzySet:
         """
         Calculate the union of this fuzzy set with another fuzzy set.
         Args:
@@ -228,11 +230,10 @@ class FuzzySet:
         return FuzzySet(
             union_name,
             min(self.left_boundary, another_fuzzy_set.left_boundary),
-            max(self.right_boundary, another_fuzzy_set.right_boundary),
+            max(self.right_boundary,another_fuzzy_set.right_boundary),
             (self.peak + another_fuzzy_set.peak) / 2,
         )
-
-    def __invert__(self) -> "FuzzySet":
+    def __invert__(self) -> FuzzySet:
         """
         Calculate the complement (negation) of this fuzzy set.
         Returns:
@@ -248,10 +249,12 @@ class FuzzySet:
         complement_name = f"¬{self.name}"
         return FuzzySet(
             complement_name,
-            1 - self.right_boundary,
-            1 - self.left_boundary,
-            1 - self.peak,
+            1-self.right_boundary,
+            1-self.left_boundary,
+            1-self.peak,
         )
+
+    
 
 
 if __name__ == "__main__":
