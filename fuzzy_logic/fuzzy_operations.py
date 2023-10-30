@@ -69,7 +69,6 @@ class FuzzySet:
         """
         return (
             f"{self.name}: [{self.left_boundary}, {self.peak}, {self.right_boundary}]"
-            
         )
 
     def __contains__(self, element: float) -> bool:
@@ -230,8 +229,6 @@ class FuzzySet:
         y_axis = [self.membership(xi) for xi in x_axis]
 
         plt.plot(x_axis, y_axis, label=self.name)
-
-
 
 
 if __name__ == "__main__":
