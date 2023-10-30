@@ -34,7 +34,6 @@ class FuzzySet:
     >>> sheru = FuzzySet("Sheru", 0.4, 1, 0.6)
     >>> sheru
     FuzzySet(name='Sheru', left_boundary=0.4, peak=1, right_boundary=0.6)
-
     >>> str(sheru)
     'Sheru: [0.4, 1, 0.6]'
 
