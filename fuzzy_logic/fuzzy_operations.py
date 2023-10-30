@@ -48,8 +48,6 @@ class FuzzySet:
     FuzzySet(name='¬Siya', left_boundary=0.30000000000000004, peak=0.5,
     right_boundary=0)
 
-    # Intersection Operation
-
     >>> siya.intersection(sheru)
     FuzzySet(name='Siya ∩ Sheru', left_boundary=0.5, peak=0.6, right_boundary=1.0)
 
