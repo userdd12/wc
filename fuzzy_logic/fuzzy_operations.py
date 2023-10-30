@@ -42,8 +42,6 @@ class FuzzySet:
     >>> siya
     FuzzySet(name='Siya', left_boundary=0.5, peak=1, right_boundary=0.7)
 
-    # Complement Operation
-
     >>> sheru.complement()
     FuzzySet(name='¬Sheru', left_boundary=0.4, peak=0.6, right_boundary=0)
     >>> siya.complement()  # doctest: +NORMALIZE_WHITESPACE
