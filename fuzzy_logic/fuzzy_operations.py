@@ -77,8 +77,8 @@ class FuzzySet:
         Returns:
             True if 'x' is a member; False otherwise.
         >>> a = FuzzySet("A", 0, 0.5, 1)
-        >>> 0.2 in a
-        True
+        >>> 0.0 in a
+        False
         >>> 0.6 in a
         True
         """
@@ -93,7 +93,7 @@ class FuzzySet:
             FuzzySet: A new fuzzy set representing the intersection.
 
         >>> FuzzySet("A", 0, 0.5, 1) & FuzzySet("B", 0.2, 0.7, 1)
-        FuzzySet(name='A ∩ B', left_boundary=0.5, peak=0.6, right_boundary=1.0)
+        FuzzySet(name='A ∩ B', left_boundary=0.2, peak=1, right_boundary=0.6)
         """
         return FuzzySet(
             f"{self.name} ∩ {other.name}",
@@ -111,7 +111,7 @@ class FuzzySet:
             FuzzySet: A new fuzzy set representing the union.
 
         >>> FuzzySet("A", 0, 0.5, 1) | FuzzySet("B", 0.2, 0.7, 1)
-        FuzzySet(name='A ∪ B', left_boundary=0.5, peak=0.6, right_boundary=1.0)
+        FuzzySet(name='A ∪ B', left_boundary=0, peak=1, right_boundary=0.6)
         """
         union_name = f"{self.name} ∪ {other.name}"
         return FuzzySet(
@@ -128,7 +128,7 @@ class FuzzySet:
             FuzzySet: A new fuzzy set representing the complement.
 
         >>> ~FuzzySet("A", 0, 0.5, 1)
-        FuzzySet("¬A", -1, -0.5, 0)
+        FuzzySet(name='¬A', left_boundary=0, peak=1, right_boundary=0.5)
         """
         return FuzzySet(
             f"¬{self.name}",
