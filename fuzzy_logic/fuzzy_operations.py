@@ -189,13 +189,8 @@ class FuzzySet:
         Returns:
         FuzzySet: A new fuzzy set representing the intersection.
 
-        >>> a = FuzzySet("A", 0, 0.5, 1)
-        >>> b = FuzzySet("B", 0.2, 0.7, 1)
-        >>> intersection_ab = a & b
-        >>> intersection_ab.membership(0.1)
-        0.0
-        >>> intersection_ab.membership(0.35)
-        0.18749999999999994
+        >>> FuzzySet("A", 0, 0.5, 1) & FuzzySet("B", 0.2, 0.7, 1)
+        FuzzySet(name='A ∩ B', left_boundary=0.5, peak=0.6, right_boundary=1.0)
         """
         return FuzzySet(
             f"{self.name} ∩ {another_fuzzy_set.name}",
