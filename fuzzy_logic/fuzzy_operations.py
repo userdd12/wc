@@ -146,7 +146,7 @@ class FuzzySet:
         Args:
             other: Another fuzzy set to union with.
         Returns:
-        FuzzySet: A new fuzzy set representing the union.
+            A new fuzzy set representing the union.
 
         >>> FuzzySet("a", 0.1, 0.2, 0.3).union(FuzzySet("b", 0.4, 0.5, 0.6))
         FuzzySet(name='a ∪ b', left_boundary=0.1, peak=0.6, right_boundary=0.35)
