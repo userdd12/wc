@@ -17,19 +17,17 @@ class FuzzySet:
     """
     A class for representing and manipulating triangular fuzzy sets.
     Attributes:
-    name: The name or label of the fuzzy set.
-    left_boundary: The left boundary of the fuzzy set.
-    peak: The peak (central) value of the fuzzy set.
-    right_boundary: The right boundary of the fuzzy set.
+        name: The name or label of the fuzzy set.
+        left_boundary: The left boundary of the fuzzy set.
+        peak: The peak (central) value of the fuzzy set.
+        right_boundary: The right boundary of the fuzzy set.
     Methods:
-    membership(element): Calculate the membership value of
-    an input 'element' in the fuzzy set.
-    union(other): Calculate the union of this fuzzy
-    set with another fuzzy set.
-    intersection(other): Calculate the intersection of this
-    fuzzy set with another.
-    complement(): Calculate the complement (negation) of this fuzzy set.
-    plot(): Plot the membership function of the fuzzy set.
+        membership(element): Calculate the membership value of
+        an input 'element' in the fuzzy set.
+        union(other): Calculate the union of a fuzzyset with other fuzzyset 
+        intersection(other): Calculate the intersection of this fuzzy set with other.
+        complement(): Calculate the complement (negation) of this fuzzy set.
+        plot(): Plot the membership function of the fuzzy set.
 
     >>> sheru = FuzzySet("Sheru", 0.4, 1, 0.6)
     >>> sheru
@@ -91,12 +89,11 @@ class FuzzySet:
 
     def intersection(self, second_fuzzy_set) -> FuzzySet:
         """
-        Calculate the intersection of this fuzzy set
-        with another fuzzy set.
+        Calculate the intersection of two fuzzysets
         Args:
-        other: Another fuzzy set to intersect with.
+            other: Another fuzzy set to intersect with.
         Returns:
-        A new fuzzy set representing the intersection.
+            A new fuzzy set representing the intersection.
 
         >>> FuzzySet("a", 0.1, 0.2, 0.3).intersection(FuzzySet("b", 0.4, 0.5, 0.6))
         FuzzySet(name='a ∩ b', left_boundary=0.4, peak=0.3, right_boundary=0.35)
@@ -112,7 +109,7 @@ class FuzzySet:
         """
         Calculate the membership value of an input 'element' in the fuzzy set.
         Returns:
-        The membership value of 'element' in the fuzzy set.
+            The membership value of 'element' in the fuzzy set.
 
         >>> a = FuzzySet("a", 0.1, 0.2, 0.3)
         >>> a.membership(0.09)
@@ -184,9 +181,9 @@ class FuzzySet:
         """
         Calculate the intersection of this fuzzy set with another fuzzy set.
         Args:
-        other (FuzzySet): Another fuzzy set to intersect with.
+            other (FuzzySet): Another fuzzy set to intersect with.
         Returns:
-        FuzzySet: A new fuzzy set representing the intersection.
+            FuzzySet: A new fuzzy set representing the intersection.
 
         >>> FuzzySet("A", 0, 0.5, 1) & FuzzySet("B", 0.2, 0.7, 1)
         FuzzySet(name='A ∩ B', left_boundary=0.5, peak=0.6, right_boundary=1.0)
@@ -202,9 +199,9 @@ class FuzzySet:
         """
         Calculate the union of this fuzzy set with another fuzzy set.
         Args:
-        another_fuzzy_set (FuzzySet): Another fuzzy set to union with.
+            another_fuzzy_set (FuzzySet): Another fuzzy set to union with.
         Returns:
-        FuzzySet: A new fuzzy set representing the union.
+            FuzzySet: A new fuzzy set representing the union.
 
         >>> FuzzySet("A", 0, 0.5, 1) | FuzzySet("B", 0.2, 0.7, 1)
         FuzzySet(name='A ∪ B', left_boundary=0.5, peak=0.6, right_boundary=1.0)
@@ -221,7 +218,7 @@ class FuzzySet:
         """
         Calculate the complement (negation) of this fuzzy set.
         Returns:
-        FuzzySet: A new fuzzy set representing the complement.
+            FuzzySet: A new fuzzy set representing the complement.
 
         >>> ~FuzzySet("A", 0, 0.5, 1)
         FuzzySet("¬A", -1, -0.5, 0)
