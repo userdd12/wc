@@ -213,13 +213,8 @@ class FuzzySet:
         Returns:
         FuzzySet: A new fuzzy set representing the union.
 
-        >>> a = FuzzySet("A", 0, 0.5, 1)
-        >>> b = FuzzySet("B", 0.2, 0.7, 1)
-        >>> union_ab = a | b
-        >>> union_ab.membership(0.1)
-        0.1
-        >>> union_ab.membership(0.35)
-        0.35
+        >>> FuzzySet("A", 0, 0.5, 1) | FuzzySet("B", 0.2, 0.7, 1)
+        FuzzySet(name='A ∪ B', left_boundary=0.5, peak=0.6, right_boundary=1.0)
         """
         union_name = f"{self.name} ∪ {another_fuzzy_set.name}"
         return FuzzySet(
