@@ -58,8 +58,6 @@ class FuzzySet:
     >>> sheru.membership(0.6)
     0.0
 
-    # Union Operations
-
     >>> siya.union(sheru)
     FuzzySet(name='Siya ∪ Sheru', left_boundary=0.4, peak=0.7, right_boundary=1.0)
     """
