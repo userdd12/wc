@@ -167,7 +167,7 @@ class FuzzySet:
 
         plt.plot(x_axis, y_axis, label=self.name)
 
-    def __contains__(self, an_element: float) -> bool:
+    def __contains__(self, element: float) -> bool:
         """
         Check if an element 'an_element' is a member of the fuzzy set.
         Returns:
