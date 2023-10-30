@@ -197,9 +197,8 @@ class FuzzySet:
         >>> intersection_ab.membership(0.35)
         0.18749999999999994
         """
-        intersection_name = f"{self.name} ∩ {another_fuzzy_set.name}"
         return FuzzySet(
-            intersection_name,
+            f"{self.name} ∩ {another_fuzzy_set.name}",
             max(self.left_boundary, another_fuzzy_set.left_boundary),
             min(self.right_boundary, another_fuzzy_set.right_boundary),
             (self.peak + another_fuzzy_set.peak) / 2,
