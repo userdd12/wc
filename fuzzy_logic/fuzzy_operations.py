@@ -171,7 +171,7 @@ class FuzzySet:
         """
         Check if an element 'an_element' is a member of the fuzzy set.
         Returns:
-        bool: True if 'x' is a member; False otherwise.
+            True if 'x' is a member; False otherwise.
         >>> a = FuzzySet("A", 0, 0.5, 1)
         >>> 0.2 in a
         True
