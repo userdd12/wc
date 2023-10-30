@@ -77,7 +77,7 @@ class FuzzySet:
         """
         Calculate the complement (negation) of this fuzzy set.
         Returns:
-        FuzzySet: A new fuzzy set representing the complement.
+            A new fuzzy set representing the complement.
 
         >>> FuzzySet("fuzzy_set", 0.1, 0.2, 0.3).complement()
         FuzzySet(name='¬fuzzy_set', left_boundary=0.7, peak=0.9, right_boundary=0.8)
