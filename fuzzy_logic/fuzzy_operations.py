@@ -175,8 +175,7 @@ class FuzzySet:
         >>> a = FuzzySet("A", 0, 0.5, 1)
         >>> 0.2 in a
         True
-        >>> x = 0.6
-        >>> x in a
+        >>> 0.6 in a
         True
         """
         return self.membership(an_element) > 0
