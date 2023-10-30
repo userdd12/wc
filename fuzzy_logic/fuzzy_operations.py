@@ -24,7 +24,7 @@ class FuzzySet:
     Methods:
         membership(element): Calculate the membership value of
         an input 'element' in the fuzzy set.
-        union(other): Calculate the union of a fuzzyset with other fuzzyset 
+        union(other): Calculate the union of a fuzzyset with other fuzzyset
         intersection(other): Calculate the intersection of this fuzzy set with other.
         complement(): Calculate the complement (negation) of this fuzzy set.
         plot(): Plot the membership function of the fuzzy set.
