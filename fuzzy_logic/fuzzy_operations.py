@@ -73,7 +73,7 @@ class FuzzySet:
 
     def __contains__(self, element: float) -> bool:
         """
-        Check if an element 'an_element' is a member of the fuzzy set.
+        Check if an element 'element' is a member of the fuzzy set.
         Returns:
             True if 'x' is a member; False otherwise.
         >>> a = FuzzySet("A", 0, 0.5, 1)
@@ -82,7 +82,7 @@ class FuzzySet:
         >>> 0.6 in a
         True
         """
-        return self.membership(an_element) > 0
+        return self.membership(element) > 0
 
     def __and__(self, other: FuzzySet) -> FuzzySet:
         """
@@ -96,10 +96,10 @@ class FuzzySet:
         FuzzySet(name='A ∩ B', left_boundary=0.5, peak=0.6, right_boundary=1.0)
         """
         return FuzzySet(
-            f"{self.name} ∩ {another_fuzzy_set.name}",
-            max(self.left_boundary, another_fuzzy_set.left_boundary),
-            min(self.right_boundary, another_fuzzy_set.right_boundary),
-            (self.peak + another_fuzzy_set.peak) / 2,
+            f"{self.name} ∩ {other.name}",
+            max(self.left_boundary, other.left_boundary),
+            min(self.right_boundary, other.right_boundary),
+            (self.peak + other.peak) / 2,
         )
 
     def __or__(self, other: FuzzySet) -> FuzzySet:
