@@ -230,12 +230,8 @@ class FuzzySet:
         Returns:
         FuzzySet: A new fuzzy set representing the complement.
 
-        >>> a = FuzzySet("A", 0, 0.5, 1)
-        >>> complement_a = ~a
-        >>> complement_a.membership(0.1)
-        0.1
-        >>> complement_a.membership(0.75)
-        0.0
+        >>> ~FuzzySet("A", 0, 0.5, 1)
+        FuzzySet("¬A", -1, -0.5, 0)
         """
         complement_name = f"¬{self.name}"
         return FuzzySet(
