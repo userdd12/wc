@@ -233,9 +233,8 @@ class FuzzySet:
         >>> ~FuzzySet("A", 0, 0.5, 1)
         FuzzySet("¬A", -1, -0.5, 0)
         """
-        complement_name = f"¬{self.name}"
         return FuzzySet(
-            complement_name,
+            f"¬{self.name}",
             1 - self.right_boundary,
             1 - self.left_boundary,
             1 - self.peak,
