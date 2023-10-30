@@ -176,8 +176,7 @@ class FuzzySet:
         Returns:
         bool: True if 'x' is a member; False otherwise.
         >>> a = FuzzySet("A", 0, 0.5, 1)
-        >>> x = 0.2
-        >>> x in a
+        >>> 0.2 in a
         True
         >>> x = 0.6
         >>> x in a
