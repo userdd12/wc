@@ -191,7 +191,7 @@ class FuzzySet:
         """
         return self.membership(an_element) > 0
 
-    def __and__(self, another_fuzzy_set: FuzzySet) -> FuzzySet:
+    def __and__(self, other: FuzzySet) -> FuzzySet:
         """
         Calculate the intersection of this fuzzy set with another fuzzy set.
         Args:
