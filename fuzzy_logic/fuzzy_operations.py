@@ -69,6 +69,73 @@ class FuzzySet:
         """
         return (
             f"{self.name}: [{self.left_boundary}, {self.peak}, {self.right_boundary}]"
+            
+        )
+
+    def __contains__(self, element: float) -> bool:
+        """
+        Check if an element 'an_element' is a member of the fuzzy set.
+        Returns:
+            True if 'x' is a member; False otherwise.
+        >>> a = FuzzySet("A", 0, 0.5, 1)
+        >>> 0.2 in a
+        True
+        >>> 0.6 in a
+        True
+        """
+        return self.membership(an_element) > 0
+
+    def __and__(self, other: FuzzySet) -> FuzzySet:
+        """
+        Calculate the intersection of this fuzzy set with another fuzzy set.
+        Args:
+            other (FuzzySet): Another fuzzy set to intersect with.
+        Returns:
+            FuzzySet: A new fuzzy set representing the intersection.
+
+        >>> FuzzySet("A", 0, 0.5, 1) & FuzzySet("B", 0.2, 0.7, 1)
+        FuzzySet(name='A ∩ B', left_boundary=0.5, peak=0.6, right_boundary=1.0)
+        """
+        return FuzzySet(
+            f"{self.name} ∩ {another_fuzzy_set.name}",
+            max(self.left_boundary, another_fuzzy_set.left_boundary),
+            min(self.right_boundary, another_fuzzy_set.right_boundary),
+            (self.peak + another_fuzzy_set.peak) / 2,
+        )
+
+    def __or__(self, other: FuzzySet) -> FuzzySet:
+        """
+        Calculate the union of this fuzzy set with another fuzzy set.
+        Args:
+            other (FuzzySet): Another fuzzy set to union with.
+        Returns:
+            FuzzySet: A new fuzzy set representing the union.
+
+        >>> FuzzySet("A", 0, 0.5, 1) | FuzzySet("B", 0.2, 0.7, 1)
+        FuzzySet(name='A ∪ B', left_boundary=0.5, peak=0.6, right_boundary=1.0)
+        """
+        union_name = f"{self.name} ∪ {other.name}"
+        return FuzzySet(
+            union_name,
+            min(self.left_boundary, other.left_boundary),
+            max(self.right_boundary, other.right_boundary),
+            (self.peak + other.peak) / 2,
+        )
+
+    def __invert__(self) -> FuzzySet:
+        """
+        Calculate the complement (negation) of this fuzzy set.
+        Returns:
+            FuzzySet: A new fuzzy set representing the complement.
+
+        >>> ~FuzzySet("A", 0, 0.5, 1)
+        FuzzySet("¬A", -1, -0.5, 0)
+        """
+        return FuzzySet(
+            f"¬{self.name}",
+            1 - self.right_boundary,
+            1 - self.left_boundary,
+            1 - self.peak,
         )
 
     def complement(self) -> FuzzySet:
@@ -164,71 +231,7 @@ class FuzzySet:
 
         plt.plot(x_axis, y_axis, label=self.name)
 
-    def __contains__(self, element: float) -> bool:
-        """
-        Check if an element 'an_element' is a member of the fuzzy set.
-        Returns:
-            True if 'x' is a member; False otherwise.
-        >>> a = FuzzySet("A", 0, 0.5, 1)
-        >>> 0.2 in a
-        True
-        >>> 0.6 in a
-        True
-        """
-        return self.membership(an_element) > 0
 
-    def __and__(self, other: FuzzySet) -> FuzzySet:
-        """
-        Calculate the intersection of this fuzzy set with another fuzzy set.
-        Args:
-            other (FuzzySet): Another fuzzy set to intersect with.
-        Returns:
-            FuzzySet: A new fuzzy set representing the intersection.
-
-        >>> FuzzySet("A", 0, 0.5, 1) & FuzzySet("B", 0.2, 0.7, 1)
-        FuzzySet(name='A ∩ B', left_boundary=0.5, peak=0.6, right_boundary=1.0)
-        """
-        return FuzzySet(
-            f"{self.name} ∩ {another_fuzzy_set.name}",
-            max(self.left_boundary, another_fuzzy_set.left_boundary),
-            min(self.right_boundary, another_fuzzy_set.right_boundary),
-            (self.peak + another_fuzzy_set.peak) / 2,
-        )
-
-    def __or__(self, another_fuzzy_set: FuzzySet) -> FuzzySet:
-        """
-        Calculate the union of this fuzzy set with another fuzzy set.
-        Args:
-            another_fuzzy_set (FuzzySet): Another fuzzy set to union with.
-        Returns:
-            FuzzySet: A new fuzzy set representing the union.
-
-        >>> FuzzySet("A", 0, 0.5, 1) | FuzzySet("B", 0.2, 0.7, 1)
-        FuzzySet(name='A ∪ B', left_boundary=0.5, peak=0.6, right_boundary=1.0)
-        """
-        union_name = f"{self.name} ∪ {another_fuzzy_set.name}"
-        return FuzzySet(
-            union_name,
-            min(self.left_boundary, another_fuzzy_set.left_boundary),
-            max(self.right_boundary, another_fuzzy_set.right_boundary),
-            (self.peak + another_fuzzy_set.peak) / 2,
-        )
-
-    def __invert__(self) -> FuzzySet:
-        """
-        Calculate the complement (negation) of this fuzzy set.
-        Returns:
-            FuzzySet: A new fuzzy set representing the complement.
-
-        >>> ~FuzzySet("A", 0, 0.5, 1)
-        FuzzySet("¬A", -1, -0.5, 0)
-        """
-        return FuzzySet(
-            f"¬{self.name}",
-            1 - self.right_boundary,
-            1 - self.left_boundary,
-            1 - self.peak,
-        )
 
 
 if __name__ == "__main__":
