@@ -147,7 +147,7 @@ class FuzzySet:
         """
         Calculate the union of this fuzzy set with another fuzzy set.
         Args:
-        second_fuzzy_set (FuzzySet): Another fuzzy set to union with.
+            other: Another fuzzy set to union with.
         Returns:
         FuzzySet: A new fuzzy set representing the union.
 
