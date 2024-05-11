@@ -210,7 +210,7 @@ class LRUCache(Generic[T, U]):
     """
 
     # class variable to map the decorator functions to their respective instance
-    decorator_function_to_instance_map: dict[Callable[[T], U], LRUCache[T, U]] = {}
+    decorator_function_to_instance_map: dict[Callable[[T], U], LRUCache[T, U]] = {}  # noqa: RUF012
 
     def __init__(self, capacity: int):
         self.list: DoubleLinkedList[T, U] = DoubleLinkedList()
